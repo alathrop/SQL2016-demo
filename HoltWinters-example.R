@@ -48,7 +48,10 @@ plot.ts(logsouvenirTScomponents$seasonal)
 # the time series by using the “plot()” function
 plot(logsouvenirTScomponents)
 
-
+# seasonally adjust the time series by estimating the seasonal component, 
+# and subtracting the estimated seasonal component from the original time series.
+souvenirSeasonallyAdjusted <- logsouvenirtimeseries - logsouvenirTScomponents$seasonal
+plot(souvenirSeasonallyAdjusted, main="Seasonally Adjusted")
 
 
 
