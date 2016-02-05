@@ -351,32 +351,3 @@ logsouvenir.HoltWintersforecasts$SSE
 #####
 # Section 2 - ggplot2 and ggfortify
 # ggfortify allows ggplot2 to use ts objects directly in plotting
-
-# original ts object
-souvenir.ts
-
-# plots of the 3 time series methods (in-sample)
-autoplot(logsouvenir.ts)
-autoplot(logsouvenir.SMA8)
-autoplot(logsouvenir.forecasts.ts)
-autoplot(logsouvenir.Holtforecasts.ts)
-
-logsouvenir.HoltWintersforecasts.ts <- ts(logsouvenir.HoltWintersforecasts$fitted[,"xhat"], 
-                                   frequency=12, start=c(2010,1))
-
-autoplot(logsouvenir.HoltWintersforecasts.ts)
-
-# plots of the 3 time series methods (future periods forecast)
-autoplot(logsouvenir.forecasts2)
-autoplot(logsouvenir.Holtforecasts2)
-autoplot(logsouvenir.HoltWintersforecasts2) +
-  ggtitle('Holt-Winters Exponential Model') + xlab('Year') + ylab('log(Sales)')
-
-# create data frame with separate columns for year, month, sales
-souvenir.df <- data.frame(
-  year      = as.numeric(floor(time(souvenir.ts))), 
-  month     = as.numeric(cycle(souvenir.ts)),
-  sales     = as.numeric(souvenir.ts)
-)
-
-souvenir.df
