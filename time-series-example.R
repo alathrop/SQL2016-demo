@@ -31,8 +31,16 @@ require(ggfortify)
 
 ### 
 # load data
-# initial data are a vector of sales values
-souvenir <- scan("http://robjhyndman.com/tsdldata/data/fancy.dat")
+
+# this section included to identify source of original data and export to CSV ---
+# initial data are a vector of dollar values of souvenir sales 
+# souvenir <- scan("http://robjhyndman.com/tsdldata/data/fancy.dat")
+##### write CSV
+# write.table(souvenir, file="data\\souvenir-data.csv", row.names=FALSE, col.names=FALSE)
+# -------------------------------------------------------------------------------
+
+# read from local CSV in working-directory\data path
+souvenir <- read.csv("data\\souvenir-data.csv", header=FALSE, check.names=FALSE, stringsAsFactors=FALSE)
 
 #####
 # EDA - exploratory data analysis prior to forecasting
@@ -351,3 +359,4 @@ logsouvenir.HoltWintersforecasts$SSE
 #####
 # Section 2 - ggplot2 and ggfortify
 # ggfortify allows ggplot2 to use ts objects directly in plotting
+
